@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+#    url: jdbc:oracle:thin:@(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 134.96.129.27)(PORT = 1522))(ADDRESS = (PROTOCOL = TCP)(HOST = 134.96.129.28)(PORT = 1522))(LOAD_BALANCE = yes)(FAILOVER = ON)(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = report)(FAILOVER_MODE=(TYPE = SELECT)(METHOD = BASIC)(RETIRES = 20)(DELAY = 15))))
+    username: root
+#    username: report
+    password: root
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+
+
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.ly.springboot-project</groupId>
+    <artifactId>004-springboot-mybatis</artifactId>
+    <version>1.0.0</version>
+    <name>004-springboot-mybatis</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>14</java.version>
+<!--        修改父工程管理依赖的版本号-->
+<!--        <com.oracle.version>ojdbc14</com.oracle.version>-->
+    </properties>
+
+    <repositories>
+        <!--        <repository>-->
+        <!--            <id>public</id>-->
+        <!--            <url>http://172.16.0.13:8081/nexus/content/groups/public/</url>-->
+        <!--        </repository>-->
+        <repository>
+            <id>aliMaven</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>public</id>
+            <url>http://61.164.40.36:10082/nexus/content/groups/public/</url>
+        </repository>
+
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--添加oracle驱动-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+
+        <!--Mybatis整合SpringBoot框架的起步依赖-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+<!--        当xml文件放在java目录下，需要手动添加资源文件，否则没法编译-->
+<!--        配置文件理应放在resource目录下-->
+<!--        未配置resource时：org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.ly.springboot.mapper.ModelTreeMapper.selectByPrimaryKey -->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+<!--            mybatis 代码自动生成插件-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <!-- 配置文件的位置-->
+                    <configurationFile>GeneratorConfig.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+
+            </plugin>
+
+<!--            SpringBoot项目编译打包插件-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,5 @@
+#主核心配置文件
+#激活环境
+spring:
+  profiles:
+    active: dev

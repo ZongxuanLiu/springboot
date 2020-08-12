@@ -1,0 +1,11 @@
+#properties与yml文件只是格式不一样
+
+#yml格式规范
+  #值与冒号前要有空格
+    #一个tab制表格代表下一级
+#yml和yaml是同一种文件，只是后缀名不同
+
+server:
+  port: 8082
+  servlet:
+    context-path: /springboot
